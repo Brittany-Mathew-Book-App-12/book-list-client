@@ -5,7 +5,7 @@ var app = app || {};
 const ENV = {};
 
 ENV.isProduction = window.location.protocol === 'https:';
-ENV.productionApiUrl = 'https://git.heroku.com/bm-book-app.git';
+ENV.productionApiUrl = 'https://bm-book-app.herokuapp.com/';
 ENV.developmentApiUrl = 'http://localhost:3000';
 ENV.apiUrl = ENV.isProduction ? ENV.productionApiUrl : ENV.developmentApiUrl;
 
@@ -35,3 +35,5 @@ ENV.apiUrl = ENV.isProduction ? ENV.productionApiUrl : ENV.developmentApiUrl;
 
   module.Book = Book;
 })(app)
+
+// https://bm-book-app.herokuapp.com/api/v1/books
