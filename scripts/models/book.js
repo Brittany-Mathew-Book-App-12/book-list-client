@@ -7,9 +7,10 @@ const ENV = {};
 ENV.isProduction = window.location.protocol === 'https:';
 ENV.productionApiUrl = 'https://bm-book-app.herokuapp.com/';
 ENV.developmentApiUrl = 'http://localhost:3000';
+
 ENV.apiUrl = ENV.isProduction ? ENV.productionApiUrl : ENV.developmentApiUrl;
 
-(function (module) {
+(function(module) {
   function errorCallback(err) {
     console.error(err);
     module.errorView.initErrorPage(err);
@@ -19,7 +20,7 @@ ENV.apiUrl = ENV.isProduction ? ENV.productionApiUrl : ENV.developmentApiUrl;
     Object.keys(rawBookObj).forEach(key => this[key] = rawBookObj[key]);
   }
 
-  Book.prototype.toHtml = function () {
+  Book.prototype.toHtml = function() {
     let template = Handlebars.compile($('#book-list-template').text());
     return template(this);
   }
@@ -27,11 +28,12 @@ ENV.apiUrl = ENV.isProduction ? ENV.productionApiUrl : ENV.developmentApiUrl;
   Book.all = [];
   Book.loadAll = rows => Book.all = rows.sort((a, b) => b.title - a.title).map(book => new Book(book));
 
-  Book.fetchAll = callback =>
+  Book.fetchAll = callback => {
     $.get(`${ENV.apiUrl}/api/v1/books`)
       .then(Book.loadAll)
       .then(callback)
       .catch(errorCallback);
+  };
 
   Book.fetchOne = (result,callback) => {
     $.getJSON(`${ENV.apiUrl}/api/v1/books/${result}`)
@@ -57,7 +59,7 @@ ENV.apiUrl = ENV.isProduction ? ENV.productionApiUrl : ENV.developmentApiUrl;
     let book = new Book({
       title: $('#book-title').val(),
       author: $('#book-author').val(),
-      isbn: $('#book-isbn').val(),
+      isbn: $('#book-isbn').val(),  
       image_url: $('#book-image-url').val(),
       description: $('#book-description').val()
     });
@@ -67,7 +69,6 @@ ENV.apiUrl = ENV.isProduction ? ENV.productionApiUrl : ENV.developmentApiUrl;
 
 
   });
-  module.Book = Book;
-})(app)
 
-// https://bm-book-app.herokuapp.com/api/v1/books
+  module.Book = Book;
+})(app);
