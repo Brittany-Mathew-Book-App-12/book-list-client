@@ -1,19 +1,22 @@
 .container {
-  margin-top: 20%;
+  margin-top: 30%;
 }
 
 .view-title {
-  width: 50%;
-  margin: 0 auto;
-}
-
-.book-container {
-  width: 50%;
-  margin: 0 auto;
+  width: 94%;
+  margin: -13px auto;
 }
 
 .book-container img {
-  max-width: 100%;
+  /* max-width: 100%; */
+  padding-left: 37%;
+  width: 23%;
+}
+
+.book-items {
+  position: relative;
+  width: 100%;
+  margin-top:10.5vw;
 }
 
 .book-items {
@@ -34,6 +37,22 @@
   margin: auto;
 }
 
+.book-overlay {
+  background: rgba(120, 120, 120, 0.75);
+  display: block;
+  width: inherit;
+  height: 30%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.detail-view {
+  height: 450px;
+}
+
 .book-overlay * {
   text-transform: capitalize;
   text-align: center;
@@ -44,6 +63,79 @@
   width: 75%;  
   position: absolute;
   right: 0;
+}
+.the-nav {
+  display:none;
+}
+
+#main-nav {
+  transition: 300ms;
+}
+
+.icon-menu {
+  font-size: 50px;
+  transition: 300ms;
+}
+
+.icon-menu:hover {
+  color: rgb(209, 27, 27);
+  cursor: pointer
+}
+
+#main-nav:hover .the-nav {
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  font-size: 24px;
+  color: white;
+  transition: 300ms;
+}
+
+a:hover {
+  color: rgb(209, 27, 27)
+}
+
+form label input, form label textarea, form button, form h2 {
+  display: block;
+  width: 80%;
+  height: 50px;
+  margin: 1% auto 5% auto;
+  border-radius: 5px;
+  border: 1px solid black;
+  box-shadow: 0;
+  font-size: 20px;
+  padding-left: 5%;
+  color: rgb(65, 62, 62);
+}
+
+form label ::-webkit-input-placeholder {
+  color: rgb(211, 205, 205);
+}
+
+form label textarea {
+  height: 100px;
+}
+form button {
+  background-color: rgb(80, 78, 78);
+  color: white;
+  float: right;
+  margin-right: 8%;
+  padding: 0%;
+  width: 30%;
+  border: none;
+  height: 55px;
+}
+form label p {
+  margin: 0 auto;
+}
+
+form h2 {
+  padding-left: 0%;
+  border: none;
+  font-size: 24px;
+  text-decoration: underline;
 }
 
 .social-links li {
@@ -66,3 +158,4 @@
   font-size: 3vw;
   color: #d13227;
 }
+

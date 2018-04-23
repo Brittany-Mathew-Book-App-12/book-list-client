@@ -42,7 +42,7 @@ ENV.apiUrl = ENV.isProduction ? ENV.productionApiUrl : ENV.developmentApiUrl;
       .catch(errorCallback);
   };
 
-  Book.prototype.create = function (callback) {
+  Book.prototype.create = function () {
     $.post(`${ENV.apiUrl}/api/v1/books`, {
       title: this.title,
       author: this.author,
@@ -50,22 +50,22 @@ ENV.apiUrl = ENV.isProduction ? ENV.productionApiUrl : ENV.developmentApiUrl;
       image_url: this.image_url,
       description: this.description
     })
-      .then(console.log)
-      .then(callback);
-  }
+      .then(console.log);
+  };
 
   $('#new-form').on('submit', (e) => {
     e.preventDefault();
     let book = new Book({
       title: $('#book-title').val(),
       author: $('#book-author').val(),
-      isbn: $('#book-isbn').val(),  
+      isbn: $('#book-isbn').val(),
       image_url: $('#book-image-url').val(),
       description: $('#book-description').val()
     });
     console.log(book);
     book.create();
     $('#book-list').append(book.toHtml());
+    $('#new-form').trigger('reset');
 
 
   });
